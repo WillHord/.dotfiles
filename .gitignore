@@ -1,4 +1,7 @@
-private/*
-
 # Add the private folder but not it's contents
+private/*
 !private/.gitkeep
+
+# Add backup folder but not it's contents
+backup/*
+!backup/.gitkeep
