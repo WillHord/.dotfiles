@@ -1,1 +1,4 @@
 private/*
+
+# Add the private folder but not it's contents
+!private/.gitkeep
