@@ -112,3 +112,23 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/willhord/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/willhord/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/willhord/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/willhord/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+# ====================== Custom Files ============================= #
+source /Users/willhord/.dotfiles/shell/aliases.sh
+# ====================== Private Files ============================= #
+source /Users/willhord/.dotfiles/private/openapikey
+source /Users/willhord/.dotfiles/private/assemblyai_api_key
+export AUTHLIB_INSECURE_TRANSPORT=true
+
+# pnpm
+export PNPM_HOME="/Users/willhord/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
