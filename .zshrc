@@ -111,6 +111,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 #zoxide setup:
 eval "$(zoxide init zsh)"
@@ -134,3 +135,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Set nvim to the default editor 
+export EDITOR="/usr/local/bin/nvim"
+
+# Nym Alias File:
+source /Users/willhord/.nym_aliases
+
+neofetch

@@ -5,3 +5,6 @@ private/*
 # Add backup folder but not it's contents
 backup/*
 !backup/.gitkeep
+
+# Do not backup old configs
+old/*
