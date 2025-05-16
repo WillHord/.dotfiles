@@ -1,5 +1,0 @@
-return {
-  {
-    "kkoomen/vim-doge",
-  },
-}

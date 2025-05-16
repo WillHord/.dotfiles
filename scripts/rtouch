@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+#
+# This script creates a new file recursively at the specified path
+#
+# Usage: rtouch <path>
+#
+# Example: rtouch /path/to/file.txt
+
+function rtouch() {
+  local path="$1"
+
+  local fullpath="${path/#\~/$HOME}"
+
+  local dirpath
+  dirpath="$(dirname "$fullpath")"
+
+  if [[ "$dirpath" != "." ]]; then
+    mkdir -p "$dirpath"
+  fi
+
+  touch "$fullpath"
+}
+
+# Default directory is empty
+target_dir=""
+
+# Parse flags
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+  -d | --directory)
+    target_dir="$2"
+    # Expand tilde if needed
+    target_dir="${target_dir/#\~/$HOME}"
+    shift 2
+    ;;
+  --) # end of flags
+    shift
+    break
+    ;;
+  -*) # unknown flag
+    echo "Unknown option: $1"
+    exit 1
+    ;;
+  *) # file argument
+    break
+    ;;
+  esac
+done
+
+for file in "$@"; do
+  if [[ -n "$target_dir" ]]; then
+    stripped_file="${file#/}"
+    full_path="$target_dir/$stripped_file"
+    rtouch "$full_path"
+  else
+    rtouch "$file"
+  fi
+done
